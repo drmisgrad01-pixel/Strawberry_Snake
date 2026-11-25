@@ -1,0 +1,172 @@
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+
+:root {
+  color-scheme: dark;
+  font: 16px system-ui, sans-serif;
+  color: #fff3ed;
+  background: #151219;
+  --muted: #cbbbc3;
+  --border: #493542;
+  --mint: #9cf3c7;
+  --pink: #ff849e;
+}
+
+body {
+  margin: 0;
+  background: radial-gradient(ellipse at 5% 20%, #391d2b, transparent 52rem);
+  min-height: 100svh;
+}
+
+.shell {
+  width: min(1180px, 100%);
+  margin: auto;
+  padding: 0 clamp(14px, 4vw, 48px) 24px;
+}
+
+.topbar, .actions, .brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.topbar {
+  justify-content: space-between;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.brand { font-size: 1rem; font-weight: 800; }
+.brand-mark {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  aspect-ratio: 1;
+  flex: none;
+  background: #452735;
+  border: 1px solid #6e3d51;
+  border-radius: 11px;
+}
+
+button {
+  color: inherit;
+  font: inherit;
+  font-weight: 700;
+  min-height: 44px;
+  border: 1px solid #795468;
+  border-radius: 10px;
+  background: #2e202b;
+  padding: 9px 13px;
+  cursor: pointer;
+}
+
+button:hover { background: #493043; }
+button:disabled { opacity: .68; cursor: wait; }
+:focus-visible { outline: 3px solid var(--mint); outline-offset: 3px; }
+
+.arcade {
+  display: grid;
+  grid-template-columns: minmax(0, .72fr) minmax(0, 1.28fr);
+  gap: clamp(22px, 5vw, 72px);
+  align-items: center;
+  padding-top: clamp(24px, 7vh, 72px);
+}
+
+h1 {
+  margin: 0 0 18px;
+  color: #ffe6dc;
+  font: 700 clamp(2.5rem, 5.4vw, 5rem)/.96 Georgia, serif;
+  letter-spacing: -.045em;
+  text-wrap: balance;
+}
+
+#description {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.55;
+  max-width: 36ch;
+}
+
+.buttons { display: grid; gap: 9px; margin-top: 26px; }
+.buttons button { text-align: left; padding: 12px 15px; }
+.buttons strong, .buttons small { display: block; }
+.buttons small { margin-top: 3px; font-size: .81rem; font-weight: 500; }
+.primary { background: var(--pink); color: #2d1420; border-color: var(--pink); }
+.primary:hover { background: #ffa7b8; }
+
+#note, #status { color: var(--muted); font-size: .83rem; line-height: 1.45; }
+#note { margin: 12px 0 0; }
+#stop { margin-top: 20px; }
+
+.machine {
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid #674456;
+  border-radius: 20px;
+  background: #221923;
+  box-shadow: 0 18px 48px #0005;
+}
+
+.hud {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  text-align: center;
+  margin: 0;
+  padding: 12px 0;
+}
+
+.hud div + div { border-inline-start: 1px solid var(--border); }
+.hud dt {
+  color: var(--muted);
+  font-size: .73rem;
+  font-weight: 750;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+}
+
+.hud dd {
+  margin: 3px 0 0;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-weight: 800;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.hud .timer dd { color: var(--mint); }
+.bar { height: 4px; background: #463544; }
+.bar i { display: block; height: 100%; width: 100%; background: var(--mint); }
+
+.stage {
+  position: relative;
+  width: 100%;
+  height: clamp(290px, 54vh, 540px);
+  isolation: isolate;
+  background:
+    radial-gradient(circle at center, #6ab49056 1px, transparent 1.5px) 0 0 / 20px 20px,
+    radial-gradient(ellipse at 50% 40%, #253d35, #101b1b 74%);
+}
+
+video, canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+video { object-fit: cover; transform: scaleX(-1); opacity: .84; pointer-events: none; }
+canvas { touch-action: none; }
+canvas:focus-visible { outline-offset: -4px; }
+#status { padding: 10px 12px; margin: 0; text-align: center; min-height: 40px; }
+
+@media (max-width: 720px) {
+  .arcade { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+  h1 { margin-bottom: 10px; }
+  .buttons { margin-top: 14px; }
+  .stage { height: clamp(225px, 43svh, 500px); }
+  body[data-playing] .console { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  body[data-playing] .console h1 { font: 800 1.18rem/1.15 system-ui, sans-serif; letter-spacing: 0; margin: 0; }
+  body[data-playing] #description { display: none; }
+  body[data-playing] #stop { margin: 0; flex: none; }
+}
+
+@media (max-width: 390px) {
+  .topbar { gap: 6px; }
+  .actions { gap: 5px; }
+  .actions button { font-size: .75rem; padding-inline: 7px; }
+  .brand { font-size: .86rem; gap: 6px; }
+  .brand-mark { width: 29px; }
+}
