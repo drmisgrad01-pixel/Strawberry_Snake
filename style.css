@@ -170,3 +170,18 @@ canvas:focus-visible { outline-offset: -4px; }
   .brand { font-size: .86rem; gap: 6px; }
   .brand-mark { width: 29px; }
 }
+
+/* Allow the title column to shrink independently of the playfield. */
+.console { min-width: 0; }
+.console h1 { overflow-wrap: anywhere; }
+.brand { min-width: 0; }
+.actions { flex-shrink: 0; }
+
+@media (min-width: 721px) {
+  .console h1 { font-size: clamp(2.5rem, 4.75vw, 4.5rem); }
+}
+
+@media (max-width: 720px) {
+  .topbar { flex-wrap: wrap; }
+  body[data-playing] .console { flex-wrap: wrap; }
+}
