@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 # Strawberry Chase
 Open this folder in VS Code. Run `python -m http.server 8080` (or `python3 -m http.server 8080`) in its terminal, then open http://localhost:8080 in Chrome or Edge. Internet is needed for MediaPipe CDN and model downloads. Click Play with camera and allow access, or Play with pointer. Camera frames are processed locally. The game uses screen-space AR overlays, not room-scale depth tracking. The 60-second timer begins after the camera tracker is ready; losing tracking does not stop the timer. Exit game releases the camera. No npm installation is needed.
 
 The redesigned playfield fits inside the page. In pointer mode, use a mouse, drag with touch, or focus the playfield and use the arrow keys. The scoreboard shows the current round and the personal best stored in your browser.
+=======
+# Strawberry_Snake
+Hand Tracking Game
+>>>>>>> 439f50f0c72ea5aa15537e9e4c6767255c29ed41
